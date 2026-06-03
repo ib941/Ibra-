@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Creative Portfolio</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 40px;
+            text-align: center;
+        }
+        header {
+            margin-bottom: 50px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #00adb5;
+        }
+        p {
+            color: #eeeeee;
+            font-size: 1.1rem;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .project-card {
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .project-card h3 {
+            color: #00adb5;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Ibrahim | Portfolio</h1>
+        <p>Welcome to my creative space. Explore my latest photography, graphic design, and media projects.</p>
+    </header>
+
+    <main>
+        <h2>Featured Work</h2>
+        <div class="gallery">
+            <div class="project-card">
+                <h3>Graphic Design</h3>
+                <p>Social media visuals, branding layouts, and commercial designs.</p>
+            </div>
+            
+            <div class="project-card">
+                <h3>Product Photography</h3>
+                <p>Commercial shots, studio lighting setups, and fragrance product showcases.</p>
+            </div>
+            
+            <div class="project-card">
+                <h3>Video & Motion</h3>
+                <p>Editing projects, showreels, and dynamic content creation.</p>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
