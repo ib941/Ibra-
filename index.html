@@ -8,86 +8,207 @@
     <style>
         :root {
             --bg-dark: #0a0a0f;
-            --accent-1: #ff0055;
-            --accent-2: #8a2be2;
-            --card-bg: rgba(255, 255, 255, 0.03);
+            --accent-1: #00f2fe;
+            --accent-2: #4facfe;
+            --card-bg: rgba(255, 255, 255, 0.05);
             --text-light: #f0f0f0;
             --whatsapp-color: #25D366;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
 
         body {
             background-color: var(--bg-dark);
             color: var(--text-light);
-            background: linear-gradient(135deg, #0a0a0f 0%, #1a0515 100%);
+            background-image: radial-gradient(circle at top right, rgba(79, 172, 254, 0.1), transparent 40%),
+                              radial-gradient(circle at bottom left, rgba(0, 242, 254, 0.1), transparent 40%);
             min-height: 100vh;
         }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        header { text-align: center; padding: 80px 20px 40px; }
-
-        .name-title {
-            font-size: 3.5rem; font-weight: 900;
-            background: linear-gradient(to right, var(--accent-1), var(--accent-2));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .subtitle { font-size: 1.2rem; color: #b3b3b3; max-width: 600px; margin: 0 auto; }
+        header {
+            text-align: center;
+            padding: 80px 20px 40px;
+            animation: fadeIn 1s ease-out;
+        }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .name-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(to right, var(--accent-1), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #b3b3b3;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 40px;
             padding: 40px 0;
         }
 
         .card {
-            background: var(--card-bg); border-radius: 20px; overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s ease;
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
-            opacity: 0; animation: fadeIn 1s ease forwards;
+            animation: fadeIn 1.2s ease-out forwards;
+            opacity: 0;
         }
 
-        .card:hover { transform: translateY(-10px); border-color: var(--accent-2); box-shadow: 0 10px 30px rgba(138, 43, 226, 0.2); }
-        .image-container { width: 100%; height: 300px; overflow: hidden; }
-        .card-image { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .card:hover .card-image { transform: scale(1.05); }
-        .card-content { padding: 25px; text-align: center; }
-        .card-title { font-size: 1.2rem; color: #fff; }
+        .card:nth-child(1) { animation-delay: 0.2s; }
+        .card:nth-child(2) { animation-delay: 0.4s; }
+        .card:nth-child(3) { animation-delay: 0.6s; }
 
-        .whatsapp-container { text-align: center; margin: 50px 0; }
+        .card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 242, 254, 0.2);
+            border-color: rgba(0, 242, 254, 0.4);
+        }
+
+        .image-container {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .card:hover .card-image {
+            transform: scale(1.1) rotate(1deg);
+        }
+
+        .card-content {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        /* قسم زر الواتساب */
+        .whatsapp-container {
+            text-align: center;
+            margin: 30px 0 50px 0;
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+
         .whatsapp-btn {
-            background: var(--whatsapp-color); color: #fff; padding: 15px 40px;
-            text-decoration: none; font-weight: bold; border-radius: 30px;
-            transition: 0.3s; display: inline-block;
+            display: inline-block;
+            background-color: var(--whatsapp-color);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 15px 45px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .whatsapp-btn:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--whatsapp-color); }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
 
     <header>
         <h1 class="name-title">Ibrahim</h1>
-        <p class="subtitle">Creative Visual Artist | Product Photography & Graphic Design</p>
+        <p class="subtitle">Graphic Designer & Photographer | Creating visual experiences that leave an impact</p>
     </header>
 
-    <div class="container">
+    <div class="container" id="portfolio">
         <div class="portfolio-grid">
-            <!-- الـ 3 كروت -->
-            <div class="card" style="animation-delay: 0.1s;"><div class="image-container"><img src="work1.jpg" class="card-image"></div><div class="card-content"><h2 class="card-title">Artistic Product Shot</h2></div></div>
-            <div class="card" style="animation-delay: 0.2s;"><div class="image-container"><img src="work2.jpg" class="card-image"></div><div class="card-content"><h2 class="card-title">Commercial Branding</h2></div></div>
-            <div class="card" style="animation-delay: 0.3s;"><div class="image-container"><img src="work3.jpg" class="card-image"></div><div class="card-content"><h2 class="card-title">Visual Content</h2></div></div>
+            
+            <!-- العمل الأول -->
+            <div class="card">
+                <div class="image-container">
+                    <img src="work1.jpg.png" alt="Project 1" class="card-image">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">Promotional Design</h2>
+                </div>
+            </div>
+
+            <!-- العمل الثاني -->
+            <div class="card">
+                <div class="image-container">
+                    <img src="work2.jpg.png" alt="Project 2" class="card-image">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">Photography</h2>
+                </div>
+            </div>
+
+            <!-- العمل الثالث -->
+            <div class="card">
+                <div class="image-container">
+                    <img src="work3.jpg.png" alt="Project 3" class="card-image">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">Visual Identity</h2>
+                </div>
+            </div>
+
         </div>
 
+        <!-- زر الواتساب -->
         <div class="whatsapp-container">
             <a href="https://wa.me/966534657849" target="_blank" class="whatsapp-btn">Chat on WhatsApp</a>
         </div>
     </div>
+
+    <footer>
+        <p>&copy; 2026 All Rights Reserved | Ibrahim</p>
+    </footer>
+
 </body>
 </html>
